@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">
+                    Dataset Name
+                </div>
+                <div class="card-body">
+                    {% if lst %}
+                        <ol class="list-group">
+                            {% for name in lst %}
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    {{name}}
+                                </div>
+                                <a class="btn btn-primary" href="{{url_for('experiment.download_experiment', experiment_name = name )}}">dowmload</a>
+                                <a class="btn btn-primary" href="{{url_for('experiment.delete_experiment', experiment_name = name )}}">delete</a>
+                            </li>
+                            {% endfor %}
+                        </ol>
+                    {% else %}
+                    <p>You don't have any dataset uploaded</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

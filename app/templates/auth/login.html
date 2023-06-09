@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class = "container">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <h1>Sign In</h1>
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <p>
+                    <label class="form-label">{{ form.username.label }}</label>
+                    {{ form.username(size=32,class="form-control") }}
+                    {% for error in form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.password.label }}
+                    {{ form.password(size=32,class="form-control") }}
+                    {% for error in form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+                <p>{{ form.submit(class="btn btn-primary") }}</p>
+            </form>
+            <p>
+                Forgot Your Password?
+                <a href="{{ url_for('auth.reset_password_request') }}">Click to Reset It</a>
+            </p>
+            <p>
+                New User?
+                <a href="{{ url_for('auth.register') }}">Click to Register!</a>
+            </p>
+
+
+        </div>
+    </div>
+</div>
+   
+{% endblock %}

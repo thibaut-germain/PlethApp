@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+
+
+        <div class="col-10">
+            <div class="card">
+                <div class="card-header">
+                    Information
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Dataset is mandatory, it must be a zip file containing indivdual recordings. Label set
+                        is optional. If label is uploaded the number of row must match the number of recordings 
+                        in the dataset. Attention, files in the dataset are sorted by their name in the alphabetic 
+                        order, the rows of the label set must be ordered accordingly. Here are the files specification: 
+                    </p>
+                    <ul>
+                        <li>
+                            Dataset: 
+                            <ul>
+                                <li>Must be a zip file</li>
+                                <li>Each file must contain a one dimensional signal</li>
+                                <li>Positive value correspond to inhalation phase and negative to exhalation</li>
+                                <li>Each signal can be of the following format:</li>
+                                <ul>
+                                    <li>.text, .csv: the delimiter is the line break (\n)</li>
+                                    <li>.EDF: only the first canal will be take in consideration</li>
+                                </ul>
+                            </ul>
+                        </li>
+
+                        <li>
+                            Label set:
+                            <ul>
+                                <li>
+                                    Must be a .txt or .csv: the row separator is the break line (\n) 
+                                    and the column separator is the coma (,).
+                                </li>
+                                <li>The first row corresponds to the labels</li>
+                                <li>Do not include index column it wil be generated</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8">
+            <h1>Upload</h1>
+            <form action="" method="post" enctype="multipart/form-data">
+                {{form.hidden_tag()}}
+
+                <div class="form-group">
+                    {{ form.dataset.label }}
+                    {{ form.dataset(class='form-control') }}
+                    {% for error in form.dataset.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.labels.label }}
+                    {{ form.labels(class='form-control') }}
+                    {% for error in form.labels.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.dataset_name.label }}
+                    {{ form.dataset_name(class='form-control') }}
+                    {% for error in form.dataset_name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <br>
+                {{ form.submit(class="btn btn-primary") }} 
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

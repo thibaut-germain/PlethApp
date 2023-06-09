@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        
+        <div class="col-10">
+            <div class="card">
+                <div class="card-header">
+                    Information
+                </div>
+                <div class="card-body">
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-8">
+            <h1>Dataset & Parameters</h1>
+            <form  action="" method="post">
+                {{ form.hidden_tag() }}
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Dataset</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            {{ form.dataset_id.label }}
+                            {{ form.dataset_id(class="form-select") }}
+                            {% for error in form.dataset_id.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.experiment_name.label }}
+                            {{ form.experiment_name(class="form-select") }}
+                            {% for error in form.experiment_name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Signal segmentation</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+
+                                <div class="form-group">
+                                    {{ form.sampfreq.label }}
+                                    {{ form.sampfreq(class='form-control') }}
+                                    {% for error in form.sampfreq.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.down_sampfreq.label }}
+                                    {{ form.down_sampfreq(class='form-control') }}
+                                    {% for error in form.down_sampfreq.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.prominence.label }}
+                                    {{ form.prominence(class='form-control') }}
+                                    {% for error in form.prominence.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.wlen.label }}
+                                    {{ form.wlen(class='form-control') }}
+                                    {% for error in form.wlen.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+
+                                <div class="form-group">
+                                    {{ form.minimum_cycle_duration.label }}
+                                    {{ form.minimum_cycle_duration(class='form-control') }}
+                                    {% for error in form.minimum_cycle_duration.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.maximum_cycle_duration.label }}
+                                    {{ form.maximum_cycle_duration(class='form-control') }}
+                                    {% for error in form.maximum_cycle_duration.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.training_size_per_interval.label }}
+                                    {{ form.training_size_per_interval(class='form-control') }}
+                                    {% for error in form.training_size_per_interval.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.interval_size.label }}
+                                    {{ form.interval_size(class='form-control') }}
+                                    {% for error in form.interval_size.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Clustering</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+
+                                <div class="form-group">
+                                    {{ form.n_in_cluster.label }}
+                                    {{ form.n_in_cluster(class='form-control') }}
+                                    {% for error in form.n_in_cluster.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.in_cluster_duration.label }}
+                                    {{ form.in_cluster_duration(class='form-control') }}
+                                    {% for error in form.in_cluster_duration.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.n_out_cluster.label }}
+                                    {{ form.n_out_cluster(class='form-control') }}
+                                    {% for error in form.n_out_cluster.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.out_cluster_duration.label }}
+                                    {{ form.out_cluster_duration(class='form-control') }}
+                                    {% for error in form.out_cluster_duration.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                
+                                <div class="form-group">
+                                    {{ form.n_iteration.label }}
+                                    {{ form.n_iteration(class='form-control') }}
+                                    {% for error in form.n_iteration.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.radius.label }}
+                                    {{ form.radius(class='form-control') }}
+                                    {% for error in form.radius.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.quantile_threshold.label }}
+                                    {{ form.quantile_threshold(class='form-control') }}
+                                    {% for error in form.quantile_threshold.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                {{ form.submit(class="btn btn-primary") }}
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
